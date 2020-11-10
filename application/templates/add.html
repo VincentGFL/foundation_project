@@ -1,0 +1,19 @@
+{% extends 'layout.html' %}
+{% block body_content %}
+
+<h2>Add a stock</h2>
+<form method='POST' action=''>
+	{{ form.hidden_tag() }}
+	{{ form.stockname.label }} {{ form.stockname }}
+	{{ form.stockprice.label }} {{ form.stockprice }}
+	{{ form.stockinstore.label }} {{ form.stockinstore }}
+	{{ form.stocktype.label }} {{ form.stocktype }}
+	{% if form.stockname.error %}
+		{% for error in form.stockname.errors %}
+			{{ error }}
+		{% endfor %}
+	{% endif %}
+	<br>
+	{{ form.submit }}
+</form>
+{% endblock body_content %}
