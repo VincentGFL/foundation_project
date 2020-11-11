@@ -25,6 +25,6 @@ class StockForm(FlaskForm):
                                                     ("headset", "Headset"),
                                                     ("game", "Game"),
                                                     ("others", "Other")])
-    submit = SubmitField('Add Stock')
+    submit = SubmitField('Submit')
     
 

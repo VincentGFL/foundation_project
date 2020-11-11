@@ -10,6 +10,11 @@
 <form action='{{ url_for('update', id=stock.id) }}'>
             <input type=submit value="Update">
 </form>
+
+<form action='{{ url_for('delete', id=stock.id) }}'>
+            <input type=submit value="Delete">
+</form>
+
 {% endfor %}
 
 

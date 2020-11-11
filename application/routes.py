@@ -43,5 +43,11 @@ def update(id):
         form.stocktype.data = stock.stocktype
     return render_template('update.html', title='Update stock information', form=form)
 
-
+#Delete records
+@app.route('/delete/<int:id>')
+def delete(id):
+    stock = Stocks.query.get(id)
+    db.session.delete(stock)
+    db.session.commit()
+    return redirect(url_for('index'))
 

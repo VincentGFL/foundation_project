@@ -2,10 +2,10 @@
 {% block body_content %}
     <form action='' method='POST'>
         {{ form.hidden_tag() }}
-        {{ form.stockname }} <br>
-	{{ form.stockprice }} <br>
-	{{ form.stockinstore }} <br>
-	{{ form.stocktype }} <br>
+	<b>{{ "Name:" }}</b> {{ form.stockname }} <br>
+	<b>{{ "Price:" }}</b> {{ form.stockprice }} <br>
+	<b>{{ "Stock in store:" }}</b> {{ form.stockinstore }} <br>
+	<b>{{ "Type:" }}</b> {{ form.stocktype }} <br>
 	{% if form.stockname.errors %}
         	{% for error in form.stockname.errors %}
         		{{ error }}<br>
