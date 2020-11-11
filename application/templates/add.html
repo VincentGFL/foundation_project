@@ -4,13 +4,13 @@
 <h2>Add a stock</h2>
 <form method='POST' action=''>
 	{{ form.hidden_tag() }}
-	{{ form.stockname.label }} {{ form.stockname }}
-	{{ form.stockprice.label }} {{ form.stockprice }}
-	{{ form.stockinstore.label }} {{ form.stockinstore }}
-	{{ form.stocktype.label }} {{ form.stocktype }}
+	{{ form.stockname.label }} {{ form.stockname }}<br>
+	{{ form.stockprice.label }} {{ form.stockprice }}<br>
+	{{ form.stockinstore.label }} {{ form.stockinstore }}<br>
+	{{ form.stocktype.label }} {{ form.stocktype }}<br>
 	{% if form.stockname.error %}
 		{% for error in form.stockname.errors %}
-			{{ error }}
+			{{ error }}<br>
 		{% endfor %}
 	{% endif %}
 	<br>

@@ -1,8 +1,16 @@
 {% extends 'layout.html' %}
 {% block body_content %}
 
-{% for stocks in all_stocks %}
-{{ stocks.name }}
+{% for stock in stocks %}
+<b>{{ "Name: " }}</b> {{ stock.stockname }}<br>
+<b>{{ "Price(£): " }}</b> {{ stock.stockprice|float }}<br>
+<b>{{ "Stock in store: " }}</b> {{ stock.stockinstore }}<br>
+<b>{{ "Type: " }}</b> {{ stock.stocktype }}
 
+<form action='{{ url_for('update', id=stock.id) }}'>
+            <input type=submit value="Update">
+</form>
 {% endfor %}
+
+
 {% endblock body_content %}

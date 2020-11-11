@@ -11,7 +11,7 @@ class StockCheck:
     def __call__(self, form, field):
         all_stocks = Stocks.query.all()
         for stocks in all_stocks:
-            if stocks.name == field.data:
+            if stocks.stockname == field.data:
                 raise ValidationError(self.message)
 
 #Form for adding new stock
