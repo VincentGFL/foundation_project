@@ -9,7 +9,7 @@ class Stocks(db.Model):
 
 class Orders(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    date = db.Column(db.DateTime)
+    date = db.Column(db.Date)
 
 class Sales(db.Model):
     id = db.Column(db.Integer, primary_key=True)

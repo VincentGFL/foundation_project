@@ -1,5 +1,6 @@
 {% extends 'layout.html' %}
 {% block body_content %}
+<a href='{{ url_for('add') }}'>Add a stock</a><br><br>
 
 {% for stock in stocks %}
 <b>{{ "Name: " }}</b> {{ stock.stockname }}<br>

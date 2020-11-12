@@ -1,0 +1,10 @@
+{% extends 'layout.html' %}
+{% block body_content %}
+<a href='{{ url_for('addorder') }}'>Add a Order</a><br><br>
+
+{% for order in orders %}
+<b>{{ "ID: " }}</b> {{ order.id }}<br>
+<b>{{ "Date: " }}</b> {{ order.date }}<br>
+{% endfor %}
+
+{% endblock body_content %}

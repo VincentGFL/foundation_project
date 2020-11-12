@@ -1,0 +1,17 @@
+{% extends 'layout.html' %}
+{% block body_content %}
+
+{% for sale in Sales %}
+<b>{{ "Sale ID:  " }}</b> {{ sale.id }}<br>
+<b>{{ "Stock Names: " }}</b> {{ sale.stock_id.stockname }}<br>
+<b>{{ "Order ID: " }}</b> {{ sale.order_id }}<br>
+<b>{{ "Sale Date: " }}</b> {{ sale.order_id.date }}
+{% endfor %}
+
+<h3>Add a sale</h3>
+<form method='POST' action=''>
+	{{ form.hidden_tag()  }}
+	{{ form.sale.stock_id.stockname }}
+	{{ form.sale.order_id }}
+	{{ form.sale.order_id.date }}
+{% endblock body_content %}

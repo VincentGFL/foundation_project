@@ -1,14 +1,15 @@
 from flask import render_template, url_for, redirect, request
 from application import app, db
-from application.models import Stocks, Orders, Sales
-from application.form import StockForm
+from application.models import Stocks, Orders #Sales
+from application.form import StockForm, OrderForm #SaleForm
 
 #Home screen
 @app.route('/', methods=['POST', 'GET'])
 def index():
     stocks = Stocks.query.all()
-
+    
     return render_template('index.html', title='Stock Checking', stocks=stocks)
+
 #Add records for stocks
 @app.route('/add', methods=['POST', 'GET'])
 def add():
@@ -51,3 +52,26 @@ def delete(id):
     db.session.commit()
     return redirect(url_for('index'))
 
+#Order Form
+@app.route('/order', methods=['POST', 'GET'])
+def order():
+    order = Orders.query.all()
+        
+    return render_template('order.html', title='Order', order=order)
+
+#Add Order Form
+@app.route('/addorder', methods=['POST', 'GET'])
+def addorder():
+    form = OrderForm()
+    order = Orders(date = form.date.data)
+    db.session.add(order)
+    db.session.commit()
+    return render_template('addorder.html', title='Add an Order', form=form)
+
+#Show Sales
+#@app.route('/sale', methods=['POST', 'GET'])
+#def sale():
+#    form = SaleForm()
+#    sale = Sales.query.all()
+
+#   return render_template('sale.html', title='Sale Checking', sale=sale, form=form)

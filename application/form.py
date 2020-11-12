@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, DecimalField, SelectField, IntegerField
+from wtforms import StringField, SubmitField, DecimalField, SelectField, IntegerField, DateField
 from wtforms.validators import DataRequired, ValidationError
 from application.models import Stocks, Orders, Sales
 
@@ -20,11 +20,20 @@ class StockForm(FlaskForm):
                 StockCheck(message='Stock name already exist')])
     stockprice = DecimalField('Price', places=2)
     stockinstore = IntegerField('Stock in store')
-    stocktype = SelectField('Stock Type', choices=[("keyboard", "Keyboard"),
-                                                    ("mouse", "Mouse"),
-                                                    ("headset", "Headset"),
-                                                    ("game", "Game"),
-                                                    ("others", "Other")])
+    stocktype = SelectField('Stock Type', choices=[("Keyboard", "Keyboard"),
+                                                    ("Mouse", "Mouse"),
+                                                    ("Headset", "Headset"),
+                                                    ("Game", "Game"),
+                                                    ("Others", "Other")])
     submit = SubmitField('Submit')
     
+#Form for adding Orders
+class OrderForm(FlaskForm):
+    date = DateField('Date of Order',format='%d-%m-%y')
+    stock = SelectField('Stock', choices=[])
+    submit = SubmitField('Submit')
 
+#Form for Sale
+#class SaleForm(FlaskForm):
+#   stocksale = SelectField('Stocks List', choices=[])
+#   submit = SubmitField('Submit')
