@@ -29,11 +29,10 @@ class StockForm(FlaskForm):
     
 #Form for adding Orders
 class OrderForm(FlaskForm):
-    date = DateField('Date of Order',format='%d-%m-%y')
-    stock = SelectField('Stock', choices=[])
+    date = StringField('Date of Order')
     submit = SubmitField('Submit')
 
 #Form for Sale
-#class SaleForm(FlaskForm):
-#   stocksale = SelectField('Stocks List', choices=[])
-#   submit = SubmitField('Submit')
+class SaleForm(FlaskForm):
+   stocklist = SelectField('Stocks List', choices=[])
+   submit = SubmitField('Add to Order')

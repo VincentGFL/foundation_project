@@ -2,9 +2,16 @@
 {% block body_content %}
 <a href='{{ url_for('addorder') }}'>Add a Order</a><br><br>
 
-{% for order in orders %}
-<b>{{ "ID: " }}</b> {{ order.id }}<br>
+{% for order in order %}
 <b>{{ "Date: " }}</b> {{ order.date }}<br>
+
+<form action='{{ url_for('updateorder', id=order.id) }}'>
+            <input type=submit value="Update">
+</form>
+
+<form action='{{ url_for('deleteorder', id=order.id) }}'>
+            <input type=submit value="Delete">
+</form>
 {% endfor %}
 
 {% endblock body_content %}

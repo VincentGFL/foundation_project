@@ -1,0 +1,16 @@
+{% extends 'layout.html' %}
+{% block body_content %}
+    <form action='' method='POST'>
+        {{ form.hidden_tag() }}
+	<div>
+	<b>{{ "Date: " }}</b> {{ form.date }} <br>
+	{{ form.submit }}<br>
+	</div>
+	<div>
+	<b>{{ "Current in Order: "}}</b> {{ orderlist }}<br><br>
+
+	<b>{{ "Stocks to add" }}</b> {{ formsale.stocklist }} <br>
+	{{ formsale.submit }}
+    	</div>
+    </form>
+{% endblock body_content %}

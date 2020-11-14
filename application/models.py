@@ -6,10 +6,12 @@ class Stocks(db.Model):
     stockprice = db.Column(db.Float(6,2), nullable=False)
     stockinstore = db.Column(db.Integer, default=0)
     stocktype = db.Column(db.String(30), nullable=False)
+    sales = db.relationship('Sales', backref='Stocks')
 
 class Orders(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    date = db.Column(db.Date)
+    date = db.Column(db.String(30))
+    sales = db.relationship('Sales', backref='Orders')
 
 class Sales(db.Model):
     id = db.Column(db.Integer, primary_key=True)

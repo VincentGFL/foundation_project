@@ -1,7 +1,7 @@
 from flask import render_template, url_for, redirect, request
 from application import app, db
-from application.models import Stocks, Orders #Sales
-from application.form import StockForm, OrderForm #SaleForm
+from application.models import Stocks, Orders, Sales
+from application.form import StockForm, OrderForm, SaleForm
 
 #Home screen
 @app.route('/', methods=['POST', 'GET'])
@@ -63,15 +63,55 @@ def order():
 @app.route('/addorder', methods=['POST', 'GET'])
 def addorder():
     form = OrderForm()
-    order = Orders(date = form.date.data)
-    db.session.add(order)
-    db.session.commit()
+    if form.validate_on_submit():
+        order = Orders(date = form.date.data)     
+        db.session.add(order)
+        db.session.commit()
+        return redirect(url_for('order'))
     return render_template('addorder.html', title='Add an Order', form=form)
 
+#Delete records for order
+@app.route('/deleteorder/<int:id>')
+def deleteorder(id):
+    order = Orders.query.get(id)
+    db.session.delete(order)
+    db.session.commit()
+    return redirect(url_for('order'))
+
+#Update records for order
+@app.route('/updateorder/<int:id>', methods=['POST', 'GET'])
+def updateorder(id):
+    form = OrderForm()
+    formsale = SaleForm()
+    formstock = StockForm()
+    order = Orders.query.get(id)
+    sale = Sales.query.all()
+    stock = Stocks.query.all()
+    orderlist = []
+    for order in Orders.query.all():
+        choices = [(stock.id, stock.stockname) for stock in Stocks.query.all()]
+        formsale.stocklist.choices = choices
+        if formsale.validate_on_submit():
+            orderlist.append(formsale.stocklist.data)
+        #return "Name: {}".format(orderlist)
+        #return redirect(url_for('updateorder/<int:id>'))
+    # db.session.commit() 
+    if form.validate_on_submit():
+        order.date = form.date.data
+        db.session.commit()
+        return redirect(url_for('order'))
+    elif request.method == 'GET':
+        form.date.data = order.date
+
+    return render_template('updateorder.html', title='Update order information', form=form, formsale=formsale, formstock=formstock)
 #Show Sales
-#@app.route('/sale', methods=['POST', 'GET'])
+#@app.route('/addorder', methods=['POST', 'GET'])
 #def sale():
 #    form = SaleForm()
-#    sale = Sales.query.all()
-
-#   return render_template('sale.html', title='Sale Checking', sale=sale, form=form)
+#    if form.validate_on_submit():
+#
+#        db.session.append(stocklist)
+#        db.session.commit()
+#        
+#    
+#    return render_template('sale.html', title='Sale Checking', sale=sale, form=form)
