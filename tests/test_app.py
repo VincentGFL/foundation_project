@@ -43,9 +43,9 @@ class TestViews(TestBase):
 #        assert request.path == url_for('update/1')
 #        self.assertEqual(response.status_code, 200)
     
-    def test_delete_get(self):
-        response = self.client.get(url_for('delete'))
-        self.assertEqual(response.status_code, 302)
+#    def test_delete_get(self):
+#        response = self.client.get(url_for('delete'))
+#        self.assertEqual(response.status_code, 302)
 
     def test_order_get(self):
         response = self.client.get(url_for('order'))
