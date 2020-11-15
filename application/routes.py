@@ -93,9 +93,6 @@ def updateorder(id):
         formsale.stocklist.choices = choices
         if formsale.validate_on_submit():
             orderlist.append(formsale.stocklist.data)
-        #return "Name: {}".format(orderlist)
-        #return redirect(url_for('updateorder/<int:id>'))
-    # db.session.commit() 
     if form.validate_on_submit():
         order.date = form.date.data
         db.session.commit()
@@ -104,14 +101,3 @@ def updateorder(id):
         form.date.data = order.date
 
     return render_template('updateorder.html', title='Update order information', form=form, formsale=formsale, formstock=formstock)
-#Show Sales
-#@app.route('/addorder', methods=['POST', 'GET'])
-#def sale():
-#    form = SaleForm()
-#    if form.validate_on_submit():
-#
-#        db.session.append(stocklist)
-#        db.session.commit()
-#        
-#    
-#    return render_template('sale.html', title='Sale Checking', sale=sale, form=form)
