@@ -171,5 +171,7 @@ There are bugs that could affect the users experience when using this app:
 
 * The add stock to order list is there but not fully functioning as it should.
 
+* When updating the price, if the name remains the same. It returns an error of the name being the same.
+
 ## Author
 Vincent Lin
