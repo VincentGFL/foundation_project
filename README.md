@@ -26,13 +26,13 @@ I have been tasked to create an application that can Create, Read, Update and De
 ## Tools
 The software and languages chosen for this project are listed below.
 
-*Trello
-*Database
-*Flask
-*Git
-*Pytest
-*Jenkins
-*Gunicorn
+* Trello
+* Database
+* Flask
+* Git
+* Pytest
+* Jenkins
+* Gunicorn
 
 Trello is used to keep track of the project's progress. What task should be done on the day and what is left to be done.
 
